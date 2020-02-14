@@ -1,0 +1,28 @@
+<center><h1>All Event </h1></center>
+<div class="container">
+  <h2>Evcent List</h2>         
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>S#</th>
+        <th>Event Name</th>
+        <th>Event Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% counter = 1 %>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= counter %></td>
+          <td><%= event.title %></td>
+          <td><%= event.event_date %></td>
+          <td><%= link_to (event_path(event.id)) do %><i class="fa fa-eye" aria-hidden="true"></i><% end %></td>
+        </tr>
+      <% counter = counter + 1 %>
+      <%  end %>
+    </tbody>
+  </table>
+</div>
+
+  

@@ -1,0 +1,48 @@
+<div class= "container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+       <div class="card-header">Event Detail</div>
+        <div class="card-body">
+          <h5 class="card-title"><%=@event.title %></h5>
+          <p class="card-text"><%=@event.description %><br>Event Date:<%=@event.event_date %> </p>
+          <% if( current_user && is_event_passed ) %>
+             <% if( is_attended ) %>
+              <a href="#" class="btn btn-primary">Alredy attended</a>
+             <% else %>
+              <%= link_to "attend", (attend_event_path(id: @event.id)), class: "btn btn-primary" %>
+             <% end %>    
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+      <div class="card-header">Users who attend the event</div>
+        <div class="card-body">
+        <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>S#</th>
+        <th>Name</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+         <% counter = 1 %>
+          <% @event_users.each do | user | %>
+        <tr>
+          <td><%= counter %></td>
+          <td><%= user.name %></td>
+          <td><%= user.gender %></td>
+        </tr>
+        <% counter = counter + 1 %>
+        <% end %>
+    </tbody>
+  </table>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
